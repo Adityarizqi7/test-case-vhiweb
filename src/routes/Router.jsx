@@ -9,7 +9,7 @@ import UserDetail from '@/pages/UserDetail'
 
 /* Support Component */
 import ScrollPage from '@/components/button/ScrollPageButton'
-// import NotFound from '@/pages/NotFound'
+import NotFound from '@/pages/NotFound'
 
 
 export default function Router() {
@@ -20,7 +20,7 @@ export default function Router() {
                 <Route path='users/:id' element={<UserDetail />} />
                 <Route path='/' element={<Login />} />
 
-                {/* <Route path='*' element={<NotFound />} /> */}
+                <Route path='*' element={<NotFound />} />
             </Routes>
         </ScrollPage>
     )

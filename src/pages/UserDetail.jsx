@@ -67,6 +67,22 @@ export default function UserDetail() {
                     loading ?
                     <Dot classDot='bg-black' className="mt-8 pl-4" />
                     :
+                    user?.length < 1 ?
+                    <div className='poppins flex flex-col items-center gap-y-4 mt-8'>
+                        <h1 className='text-9xl font-bold text-blue-600'>
+                            404
+                        </h1>
+                        <h6
+                            className={`text-slate-800 mb-2 text-center text-2xl font-bold md:text-3xl`}
+                        >
+                            OOps, User Not Found
+                        </h6>
+
+                        <p className='mb-8 text-center text-gray-500 md:text-lg'>
+                            The user you&#39;re looking for doesn&#39;t exist.
+                        </p>
+                    </div>
+                    :
                     <article className='user-wrapper py-8'>
                         <div className='user__image-name pl-4 flex 4xs:flex-col gap-3'>
                             <Photo 
