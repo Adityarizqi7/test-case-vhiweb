@@ -80,6 +80,15 @@ export default function TopBar() {
                             <Menu.Items className='absolute right-5 z-[2] mt-3 w-56 5xs:w-[7rem] divide-y divide-gray-100 rounded-md bg-white shadow-own montserrat text-slate-800'>
                                 <div className='px-1 py-1'>
                                     <Menu.Item>
+                                        <h2
+                                        className='w-full px-2 py-2 text-left text-pink-base hover:bg-blue-base hover:text-slate-100 rounded-md cursor-default truncate'
+                                        >
+                                            {getCookie('auth_email')}
+                                        </h2>
+                                    </Menu.Item>
+                                </div>
+                                <div className='px-1 py-1'>
+                                    <Menu.Item>
                                         <button
                                         onClick={handleLogout}
                                         className='w-full px-2 py-2 text-left text-pink-base hover:bg-blue-base hover:text-slate-100 rounded-md'
