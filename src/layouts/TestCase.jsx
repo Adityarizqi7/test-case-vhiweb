@@ -5,7 +5,6 @@ import { Helmet, HelmetProvider } from 'react-helmet-async'
 
 import TopBar from '@/components/navbar/TopBar';
 import ButtonToTop from '@/components/button/ButtonToTop'
-import { getCookie } from '@/utils/cookie';
 
 const TestCase = ({
         title = 'Frontend Developer Test Case - Aditya Rizqi Ardhana',
@@ -17,7 +16,7 @@ const TestCase = ({
     const navigate = useNavigate()
 
     useEffect(() => {
-        !getCookie('auth_token') && navigate('/')
+        !localStorage.getItem('token') && navigate('/')
     },[]) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (

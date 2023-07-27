@@ -9,7 +9,6 @@ import 'react-toastify/dist/ReactToastify.css'
 import reqres from "@/api/reqres"
 import Auth from "@/layouts/Auth"
 import Spinner from "@/components/loading/Spinner"
-import { getCookie, setCookie } from "@/utils/cookie"
 
 export default function Login() {
 
@@ -76,17 +75,17 @@ export default function Login() {
             if (statusResponse === 200) {
                 const authToken = dataResponse?.token
 
-                setCookie('auth_email', values?.email)
-                setCookie('auth_token', authToken)
+                localStorage.setItem('auth_token', authToken)
+                localStorage.setItem('auth_email', values?.email);
 
                 if (rememberMe) {
-                    localStorage.setItem('email', values?.email);
-                    localStorage.setItem('password', values?.password);
-                    localStorage.setItem('rememberMe', true);
+                    sessionStorage.setItem('email', values?.email);
+                    sessionStorage.setItem('password', values?.password);
+                    sessionStorage.setItem('rememberMe', true);
                 } else {
-                    localStorage.removeItem('email');
-                    localStorage.removeItem('password');
-                    localStorage.setItem('rememberMe', false);
+                    sessionStorage.removeItem('email');
+                    sessionStorage.removeItem('password');
+                    sessionStorage.setItem('rememberMe', false);
                 }
 
                 navigate('/users')
@@ -114,7 +113,7 @@ export default function Login() {
     }, []);
 
     useEffect(() => {
-        getCookie('auth_token') && navigate('/users')
+        localStorage.getItem('auth_token') && navigate('/users')
     },[]) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
