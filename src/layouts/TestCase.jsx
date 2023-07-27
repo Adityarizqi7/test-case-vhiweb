@@ -16,7 +16,7 @@ const TestCase = ({
     const navigate = useNavigate()
 
     useEffect(() => {
-        !localStorage.getItem('token') && navigate('/')
+        !localStorage.getItem('auth_token') && navigate('/')
     },[]) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (

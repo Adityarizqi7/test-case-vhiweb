@@ -102,9 +102,9 @@ export default function Login() {
     };
 
     useEffect(() => {
-        const storedEmail = localStorage.getItem('email');
-        const storedPassword = localStorage.getItem('password');
-        const storedRememberMe = localStorage.getItem('rememberMe');
+        const storedEmail = sessionStorage.getItem('email');
+        const storedPassword = sessionStorage.getItem('password');
+        const storedRememberMe = sessionStorage.getItem('rememberMe');
     
         if (storedRememberMe === 'true') {
           setValues({ email: storedEmail, password: storedPassword });

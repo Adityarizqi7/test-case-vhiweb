@@ -1,7 +1,6 @@
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { deleteAllCookies, getCookie } from "@/utils/cookie";
 
 import Photo from "../image/Photo";
 import profile from '@/assets/images/profile.png'
@@ -12,7 +11,8 @@ export default function TopBar() {
     const navigate = useNavigate()
 
     const handleLogout = () => {
-        deleteAllCookies()
+        localStorage.removeItem('auth_token')
+        localStorage.removeItem('auth_email')
         sessionStorage.removeItem('page')
         navigate('/', {replace: true})
     }
@@ -62,7 +62,7 @@ export default function TopBar() {
                                 path_light={profile}
                                 alt='Image Profile'
                                 className="w-[54px] rounded-full"
-                                caption={`<h4 style='font-family: montserrat;'>${getCookie('auth_email')} • Test Case</h4>`}
+                                caption={`<h4 style='font-family: montserrat;'>${localStorage.getItem('auth_email')} • Test Case</h4>`}
                             />
                             <Menu.Button>
                                 <ChevronDownIcon className='w-7 h-7 hover:bg-slate-100 p-1 rounded-full transition-colors duration-300 ui-open:bg-slate-100 ui-open:p-1 ui-open:rounded-full' />
@@ -83,7 +83,7 @@ export default function TopBar() {
                                         <h2
                                         className='w-full px-2 py-2 text-left text-pink-base hover:bg-blue-base hover:text-slate-100 rounded-md cursor-default truncate'
                                         >
-                                            {getCookie('auth_email')}
+                                            {localStorage.getItem('auth_email')}
                                         </h2>
                                     </Menu.Item>
                                 </div>
